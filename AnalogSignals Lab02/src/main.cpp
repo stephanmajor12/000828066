@@ -1,6 +1,7 @@
 #include <Arduino.h>
 void setup() {
  // configure the USB serial monitor
+ //I Stephan Major, 000828066 certify that all the following work is my own.
  Serial.begin(115200);
 }
 
