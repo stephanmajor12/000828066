@@ -1,8 +1,6 @@
 // COMP-10184 – Mohawk College
 // PIR Sensor Test Application
 // Turn on the blue LED with motion is detected.
-
- //I Stephan Major, 000828066 certify that all the following work is my own.
 #include <Arduino.h>
 #include <iostream>  
 #include<string>  
@@ -11,7 +9,6 @@
 #define PIN_BUTTON D6
 // *************************************************************
 static int hasRun;
-static int buttonPress;
 void setup() {
  // configure the USB serial monitor
  Serial.begin(115200);
@@ -40,31 +37,45 @@ void loop() {
  Serial.println(bPIR);
  //Serial.println("has run: " + hasRun);
 
+
+  if(PIN_BUTTON, LOW) {
+    Serial.println("button pressed!!!!");
+  } else {
+    Serial.println("NOOOOOOOOOOOOOOOOO");
+  }
+
+
   if(hasRun == 0) {
     if(bPIR == true) {
-      for(int i = 0; i < 40; i++) {
-        if(digitalRead(PIN_BUTTON) == LOW) {
-          if(buttonPress == 0) {
-            buttonPress = 1;
-          } else {
-            buttonPress = 0;
-          }
-          digitalWrite(LED_BUILTIN, HIGH);
-        } else {
-          if(buttonPress == 0) {
-            digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-            delay(125);              // wait for a second
-            digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-            delay(125);  
-          } else {
-            //do nothing
-          }
-        }
+      for(int i = 0; i < 1; i++) {
+        digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+        delay(125);              // wait for a second
+        digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+        delay(125);  
       }
-      //hasRun = 1;
+      hasRun = 1;
     }
   } else if(hasRun == 1) {
     digitalWrite(LED_BUILTIN, LOW);   // turn the LED on (HIGH is the voltage level)
     delay(125);              // wait for a second
   }
+
+
+
+ 
+ /*Stage 1
+ if(bPIR == true) {
+  delay(10000);
+ }
+ */
+/*
+ if(bPIR == true) {
+  //delay(1);
+  for(int i = 0; i < 10; i++) {
+    delay(250);
+    digitalWrite(LED_BUILTIN, false);
+    digitalWrite(LED_BUILTIN, true);
+  }
+ }
+ */
 }
