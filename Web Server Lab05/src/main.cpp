@@ -7,9 +7,6 @@
  
  //I Stephan Major, 000828066 certify that this is all my own work. 
 
-// access credentials for WiFi network. 
-const char* ssid = "VelvetCourt"; 
-const char* password = "0123a456b789c098d7654e321f"; 
  
 // WiFI server.  Listen on port 80, which is the default TCP port for HTTP 
 WiFiServer server(80); 
@@ -107,7 +104,9 @@ void loop()
           client.println(":");
           client.println(secs);
           client.println("</p>");
+          client.println("<p>Stephan Major, 000828066</p>");
           Serial.println(">> Response sent to client"); 
+
           break; 
         } 
       } 
